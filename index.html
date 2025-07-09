@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Sorting Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Advanced Sorting Visualizer</h1>
+
+    <div id="controls">
+        <div class="control-group" id="algorithm-selection">
+            <label><strong>Algorithms to Compare:</strong></label>
+            <span><input type="checkbox" name="algorithm" value="insertionSort"> Insertion Sort</span>
+            <span><input type="checkbox" name="algorithm" value="selectionSort"> Selection Sort</span>
+            <span><input type="checkbox" name="algorithm" value="bubbleSort"> Bubble Sort</span>
+            <hr>
+            <span><input type="checkbox" name="algorithm" value="shellSort"> Shell Sort</span>
+            <span><input type="checkbox" name="algorithm" value="heapSort"> Heap Sort</span>
+            <span><input type="checkbox" name="algorithm" value="mergeSort" checked> Merge Sort</span>
+            <span><input type="checkbox" name="algorithm" value="quickSort" checked> QuickSort</span>
+            <hr>
+            <span><input type="checkbox" name="algorithm" value="introSort"> IntroSort (Hybrid)</span>
+            <span><input type="checkbox" name="algorithm" value="timSort"> TimSort (Hybrid)</span>
+            <span class="interactive-option"><input type="checkbox" name="interactive" id="interactive-quicksort"> Make QuickSort Interactive</span>
+        </div>
+        <div class="control-group">
+            <label for="array-input">Initial Array:</label>
+            <input type="text" id="array-input" value="8,3,5,1,9,4,7">
+        </div>
+        <div class="control-group" id="scenario-controls">
+            <label>Generate Data:</label>
+            <button class="scenario-btn" id="scenario-nearly-sorted">Nearly Sorted</button>
+            <button class="scenario-btn" id="scenario-reversed">Reversed</button>
+            <button class="scenario-btn" id="scenario-few-unique">Few Unique</button>
+        </div>
+        <div class="control-group">
+            <button id="start-btn">Start</button>
+            <button id="step-btn">Step</button>
+            <button id="reset-btn">Reset</button>
+        </div>
+        <div class="control-group">
+            <label for="speed-slider">Speed:</label>
+            <input type="range" id="speed-slider" min="50" max="2000" value="500" step="50">
+        </div>
+    </div>
+    
+    <div class="viz-container" id="code-highlight-container">
+        <h2>Live Code <span id="focused-algo-name"></span></h2>
+        <p class="instruction">Click on a column below to focus it and see its code.</p>
+        <pre><code id="code-display"></code></pre>
+    </div>
+
+    <div class="viz-container" id="graph-container-wrapper">
+        <h2>Real-Time Cost (Comparisons)</h2>
+        <svg id="cost-graph-container"></svg>
+    </div>
+
+    <div class="visualization-area" id="versus-area">
+        <!-- This area will be populated by JavaScript -->
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
